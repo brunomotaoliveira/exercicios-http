@@ -16,7 +16,6 @@ class CorreiosController extends Controller {
         $response = Http::get($urlBusca);
 
         $dadosDaBusca = $response->json();
-
         
         return response($dadosDaBusca['ibge']);
         

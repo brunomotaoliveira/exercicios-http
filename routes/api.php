@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CorreiosController;
 use App\Http\Controllers\GithubController;
+use App\Http\Controllers\ProdutosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get("/buscardados/all", [CorreiosController::class, 'buscardados']);
 
 Route::get("/buscargithub", [GithubController::class, 'buscargithub']);
+
+Route::get("/somadosprodutos", [ProdutosController::class, 'somadosprodutos']);
