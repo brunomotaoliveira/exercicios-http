@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/buscardados/all", [CorreiosController::class, 'buscardados']);
+Route::get("/buscardados/all", [CorreiosController::class, 'buscadados']);
 
 Route::get("/buscargithub", [GithubController::class, 'buscargithub']);
 

@@ -8,19 +8,20 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class CorreiosController extends Controller {
-    public function buscardados() {
+    public static function getCepInViaCep($cep) {
         
-
-        $urlBusca = "https://viacep.com.br/ws/01001000/json/unicode/";
-
+        $urlBusca = "https://viacep.com.br/ws/$cep/json/unicode/";
         $response = Http::get($urlBusca);
-
         $dadosDaBusca = $response->json();
+
+        return (object) $dadosDaBusca[0]->ibge;
         
-        return response($dadosDaBusca['ibge']);
-        $produtoDois = ProdutosController::getPriceInProductVtex(20445);
     }
 
+    public function buscaDados() {
+        $cepConsultado = CorreiosController::getCepInViaCep(01001000);
+        dd($cepConsultado);
+    }
     
 }
 
