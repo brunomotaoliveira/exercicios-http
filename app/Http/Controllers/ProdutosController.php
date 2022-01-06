@@ -7,37 +7,19 @@ use Illuminate\Support\Facades\Http;
 
 class ProdutosController extends Controller
 {
-    public function somaDosProdutos() 
-    {
-        $urlProdutoUm = "https://casaevideo.corebiz.ag/vtexcommercestable/api/catalog_system/pub/products/search?fq=productId:20445";
-    
-        $urlProdutoDois = "https://casaevideo.corebiz.ag/vtexcommercestable/api/catalog_system/pub/products/search?fq=productId:92948";
-
-        $responseProdutoUm = Http::get($urlProdutoUm);
-        $responseProdutoDois = Http::get($urlProdutoDois);
-
+    public static function getPriceInProductVtex($id) {
+        $urlProductId = "https://casaevideo.corebiz.ag/vtexcommercestable/api/catalog_system/pub/products/search?fq=productId:$id";
+        $responseProdutoUm = Http::get($urlProductId);
         $valorProdutoUm = $responseProdutoUm->json();
-        
-        $valorProdutoDois = $responseProdutoDois->json();
 
-        foreach($valorProdutoUm as $valorProd1) {
-            foreach($valorProd1["items"] as $priceProdutoUm) {
-                foreach($priceProdutoUm["sellers"] as $price1) {
-                    $listPriceTrue = [];
-                    //return response($price1["commertialOffer"]);
-                    foreach($price1["commertialOffer"] as $priceTrue) {
-                        //array_push($listPriceTrue, $priceTrue["price"]);
-                        return $priceTrue; 
-
-                    } 
-                    
-                }
-            }
-        }
-
-
-        
-//items > sellers > commertialOffer > price
+        return $valorProdutoUm[0]["items"][0]["sellers"][0]["commertialOffer"]["Price"];
     }
 
+    public function somaDosProdutos() 
+    {
+        $produtoUm = ProdutosController::getPriceInProductVtex(1000); // this->getPriceInProductVtex(1000);
+        $produtoDois = ProdutosController::getPriceInProductVtex(20445); // tem que estar static
+        $produtoTres = self::getPriceInProductVtex(1000);
+        dd($produtoUm + $produtoDois);
+    }
 }

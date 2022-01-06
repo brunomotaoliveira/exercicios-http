@@ -18,7 +18,7 @@ class CorreiosController extends Controller {
         $dadosDaBusca = $response->json();
         
         return response($dadosDaBusca['ibge']);
-        
+        $produtoDois = ProdutosController::getPriceInProductVtex(20445);
     }
 
     
