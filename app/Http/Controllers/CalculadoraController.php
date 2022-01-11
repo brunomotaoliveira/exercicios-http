@@ -12,5 +12,8 @@ class CalculadoraController extends Controller
         $somaValor2 = $request->input('valor2');
     }
 
-    public function setSubtracao(Request $request)
+    public function setSubtracao(Request $request) {
+        $subtrairValor1 = $request->input('valor1');
+        $subtrairValor2 = $request->input('valor2');
+    }
 }
