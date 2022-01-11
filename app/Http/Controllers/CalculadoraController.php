@@ -16,4 +16,11 @@ class CalculadoraController extends Controller
         $subtrairValor1 = $request->input('valor1');
         $subtrairValor2 = $request->input('valor2');
     }
+
+    public function setDivisao(Request $request) {
+        $dividirValor1 = $request->input('valor1');
+        $dividirValor2 = $request->input('valor2');
+    }
+
+    
 }
