@@ -22,5 +22,8 @@ class CalculadoraController extends Controller
         $dividirValor2 = $request->input('valor2');
     }
 
-    
+    public function setMultiplicacao(Request $request) {
+        $multiplicarValor1 = $request->input('valor1');
+        $multiplicarValor2 = $request->input('valor2');
+    }
 }
