@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalculadoraController;
 use App\Http\Controllers\CorreiosController;
 use App\Http\Controllers\GithubController;
 use App\Http\Controllers\ProdutosController;
@@ -26,3 +27,5 @@ Route::get("/buscardados/all", [CorreiosController::class, 'buscadados']);
 Route::get("/buscargithub", [GithubController::class, 'buscargithub']);
 
 Route::get("/somadosprodutos", [ProdutosController::class, 'somadosprodutos']);
+
+Route::post("/calculadora", [CalculadoraController::class, 'calculadora']);
